@@ -10,7 +10,7 @@ from gpt3_api import make_requests as make_gpt3_requests
 from templates.clf_task_template import template_1
 
 
-random.seed(42)
+random.seed(5)
 
 
 templates = {
@@ -94,7 +94,7 @@ if __name__ == '__main__':
                             ["instruction", "is_classification"]
                         )
                     fout.write(json.dumps(data, ensure_ascii=False) + "\n")
-            else:
+            eilse:
                 # prefix = compose_prompt_prefix(human_written_tasks, batch[0]["instruction"], 8, 2)
                 prefix = templates[args.template]
                 prompts = [prefix + " " + d["instruction"].strip() + "\n" + "Is it classification?" for d in batch]

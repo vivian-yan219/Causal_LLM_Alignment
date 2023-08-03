@@ -7,9 +7,52 @@ from datetime import datetime
 import argparse
 import time
     
+def make_gpt3_requests_chat(engine, messages, max_tokens, temperature, top_p,
+        frequency_penalty, presence_penalty, retries=3, api_key=None, organization=None
+    ):
+    response = None
+    target_length = max_tokens
+    if api_key is not None:
+        openai.api_key = api_key
+    if organization is not None:
+        openai.organization = organization
+    retry_cnt = 0
+    backoff_time = 30
+    while retry_cnt <= retries:
+        try:
+            response = openai.ChatCompletion.create(
+                model=engine, #model
+                messages=messages,
+                max_tokens=target_length,
+                temperature=temperature,
+                top_p=top_p,
+                frequency_penalty=frequency_penalty,
+                presence_penalty=presence_penalty,
+                # stop=stop_sequences,
+                # n=n,
+            )
+            break
+        except openai.error.OpenAIError as e:
+            print(f"OpenAIError: {e}.")
+            if "Please reduce your prompt" in str(e):
+                target_length = int(target_length * 0.8)
+                print(f"Reducing target length to {target_length}, retrying...")
+            else:
+                print(f"Retrying in {backoff_time} seconds...")
+                time.sleep(backoff_time)
+                backoff_time *= 1.5
+            retry_cnt += 1
+
+    data = {
+        "prompt": messages[0]['content'],
+        #"prompt": prompt
+        "response": response,
+        "created_at": str(datetime.now()),
+    }
+    return data
 
 def make_requests(
-        engine, prompts, max_tokens, temperature, top_p, 
+        engine, prompts, max_tokens, temperature, top_p,
         frequency_penalty, presence_penalty, stop_sequences, logprobs, n, best_of, retries=3, api_key=None, organization=None
     ):
     response = None
@@ -46,7 +89,7 @@ def make_requests(
                 time.sleep(backoff_time)
                 backoff_time *= 1.5
             retry_cnt += 1
-    
+
     if isinstance(prompts, list):
         results = []
         for j, prompt in enumerate(prompts):
@@ -64,7 +107,51 @@ def make_requests(
             "created_at": str(datetime.now()),
         }
         return [data]
+'''
+        engine, messages, max_tokens, temperature, top_p,
+        frequency_penalty, presence_penalty, retries=3, api_key=None, organization=None
+    ):
+    response = None
+    target_length = max_tokens
+    if api_key is not None:
+        openai.api_key = api_key
+    if organization is not None:
+        openai.organization = organization
+    retry_cnt = 0
+    backoff_time = 30
+    while retry_cnt <= retries:
+        try:
+            response = openai.ChatCompletion.create(
+                model=engine, #model
+                messages=messages,
+                max_tokens=target_length,
+                temperature=temperature,
+                top_p=top_p,
+                frequency_penalty=frequency_penalty,
+                presence_penalty=presence_penalty,
+                # stop=stop_sequences,
+                # n=n,
+            )
+            break
+        except openai.error.OpenAIError as e:
+            print(f"OpenAIError: {e}.")
+            if "Please reduce your prompt" in str(e):
+                target_length = int(target_length * 0.8)
+                print(f"Reducing target length to {target_length}, retrying...")
+            else:
+                print(f"Retrying in {backoff_time} seconds...")
+                time.sleep(backoff_time)
+                backoff_time *= 1.5
+            retry_cnt += 1
 
+    data = {
+        "prompt": messages[0]['content'],
+        #"prompt": prompt
+        "response": response,
+        "created_at": str(datetime.now()),
+    }
+    return data
+'''
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -176,18 +263,18 @@ if __name__ == "__main__":
                 for p in batch_prompts:
                     fout.write(json.dumps(existing_responses[p]) + "\n")
             else:
+                
                 results = make_requests(
-                    engine=args.engine,
-                    prompts=batch_prompts,
+                    model=args.engine,
+                    messages=messages,
+                    #messages=[{'role':'user', 'content':batch_prompts}],
                     max_tokens=args.max_tokens,
                     temperature=args.temperature,
                     top_p=args.top_p,
                     frequency_penalty=args.frequency_penalty,
                     presence_penalty=args.presence_penalty,
                     stop_sequences=args.stop_sequences,
-                    logprobs=args.logprobs,
                     n=args.n,
-                    best_of=args.best_of,
                 )
                 for data in results:
                     fout.write(json.dumps(data) + "\n")

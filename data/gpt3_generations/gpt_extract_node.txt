@@ -1,0 +1,307 @@
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Whether the patient eats citrus has a direct effect on whether the patient has sufficient vitamin C. Whether the patient has sufficient vitamin C has a direct effect on whether the patient recovers from scurvy. 1. Whether the patient has access to fresh fruits and vegetables affects whether the patient eats citrus.
+   - This new cause and effect pair adds a branch from the "Whether the patient eats citrus" node, indicating that the availability of fresh fruits and vegetables can influence the patient's consumption of citrus fruits.
+
+2. Whether the patient receives proper medical treatment affects whether the patient recovers from scurvy.
+   - This new cause and effect pair adds a branch from the "Whether the patient recovers from scurvy" node, highlighting that receiving appropriate medical care plays a direct role in the patient's recovery process. 3. Whether the patient has a balanced diet affects whether the patient has access to fresh fruits and vegetables.
+   - This new cause and effect pair adds a branch from the "Whether the patient has access to fresh fruits and vegetables" node, indicating that having a balanced diet can impact the availability of fresh produce.
+
+4. Whether the patient exercises regularly affects whether the patient has sufficient vitamin C.
+   - This new cause and effect pair adds a branch from the "Whether the patient has sufficient vitamin C" node, suggesting that regular exercise can influence the body's need for and absorption of vitamin C.
+5. Whether the patient has a genetic predisposition affects whether the patient has sufficient vitamin C.
+   - This new cause and effect pair adds a branch from the "Whether the patient has sufficient vitamin C" node, indicating that genetic factors can play a role in determining the body's ability to maintain adequate levels of vitamin C.
+
+6. Whether the patient has access to healthcare affects whether the patient receives proper medical treatment.
+   - This new cause and effect pair adds a branch from the "Whether the patient receives proper medical treatment" node, highlighting that access to healthcare services is crucial for receiving appropriate medical care and treatment for scurvy or any other condition.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Whether the patient eats citrus has a direct effect on whether the patient has sufficient vitamin C. Whether the patient has sufficient vitamin C has a direct effect on whether the patient recovers from scurvy. 1. Whether the patient has access to fresh fruits and vegetables affects whether the patient eats citrus.
+   - This new cause and effect pair adds a branch from the "Whether the patient eats citrus" node, indicating that the availability of fresh fruits and vegetables can influence the patient's consumption of citrus fruits.
+
+2. Whether the patient receives proper medical treatment affects whether the patient recovers from scurvy.
+   - This new cause and effect pair adds a branch from the "Whether the patient recovers from scurvy" node, highlighting that receiving appropriate medical care plays a direct role in the patient's recovery process. 3. Whether the patient has a balanced diet affects whether the patient has access to fresh fruits and vegetables.
+   - This new cause and effect pair adds a branch from the "Whether the patient has access to fresh fruits and vegetables" node, indicating that having a balanced diet can impact the availability of fresh produce.
+
+4. Whether the patient exercises regularly affects whether the patient has sufficient vitamin C.
+   - This new cause and effect pair adds a branch from the "Whether the patient has sufficient vitamin C" node, suggesting that regular exercise can influence the body's need for and absorption of vitamin C.
+5. Whether the patient has a genetic predisposition affects whether the patient has sufficient vitamin C.
+   - This new cause and effect pair adds a branch from the "Whether the patient has sufficient vitamin C" node, indicating that genetic factors can play a role in determining the body's ability to maintain adequate levels of vitamin C.
+
+6. Whether the patient has access to healthcare affects whether the patient receives proper medical treatment.
+   - This new cause and effect pair adds a branch from the "Whether the patient receives proper medical treatment" node, highlighting that access to healthcare services is crucial for receiving appropriate medical care and treatment for scurvy or any other condition.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Kidney stone size has a direct effect on whether the patient receives treatment.Whether the patient receives treatment has a direct effect on whether the patient recovers.Kidney stone size has a direct effect on whether the patient recovers. Whether the patient receives treatment has a direct effect on the duration of recovery.
+Duration of recovery has a direct effect on the overall health outcomes of the patient. Kidney stone size has a direct effect on whether the patient receives treatment.
+Whether the patient receives treatment has a direct effect on whether the patient recovers.
+Kidney stone size has a direct effect on whether the patient recovers.
+Whether the patient receives treatment has a direct effect on the duration of recovery.
+Duration of recovery has a direct effect on the overall health outcomes of the patient.
+
+Newly created nodes:
+
+1. Patient's age has a direct effect on kidney stone size.
+2. Patient's gender has a direct effect on kidney stone size.
+3. Patient's lifestyle choices have a direct effect on kidney stone size.
+4. Availability of healthcare resources has a direct effect on whether the patient receives treatment.
+5. Patient's financial status has a direct effect on whether the patient receives treatment.
+6. Patient's access to transportation has a direct effect on whether the patient receives treatment.
+7. Quality of medical care received has a direct effect on whether the patient recovers.
+8. Patient's adherence to prescribed treatments has a direct effect on whether the patient recovers.
+9. Patient's emotional well-being has a direct effect on the duration of recovery.
+10. Patient's social support system has a direct effect on the duration of recovery.
+11. Patient's overall health condition has a direct effect on the duration of recovery.
+12. Patient's compliance with post-recovery guidelines has a direct effect on the overall health outcomes of the patient.
+13. Patient's underlying health conditions have a direct effect on the overall health outcomes of the patient.
+14. Patient's genetic predisposition has a direct effect on the overall health outcomes of the patient.
+15. Patient's access to follow-up care has a direct effect on the overall health outcomes of the patient.
+16. Patient's engagement in lifestyle changes has a direct effect on the overall health outcomes of the patient.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Kidney stone size has a direct effect on whether the patient receives treatment.Whether the patient receives treatment has a direct effect on whether the patient recovers.Kidney stone size has a direct effect on whether the patient recovers. Whether the patient receives treatment has a direct effect on the duration of recovery.
+Duration of recovery has a direct effect on the overall health outcomes of the patient. Kidney stone size has a direct effect on whether the patient receives treatment.
+Whether the patient receives treatment has a direct effect on whether the patient recovers.
+Kidney stone size has a direct effect on whether the patient recovers.
+Whether the patient receives treatment has a direct effect on the duration of recovery.
+Duration of recovery has a direct effect on the overall health outcomes of the patient.
+
+Newly created nodes:
+
+1. Patient's age has a direct effect on kidney stone size.
+2. Patient's gender has a direct effect on kidney stone size.
+3. Patient's lifestyle choices have a direct effect on kidney stone size.
+4. Availability of healthcare resources has a direct effect on whether the patient receives treatment.
+5. Patient's financial status has a direct effect on whether the patient receives treatment.
+6. Patient's access to transportation has a direct effect on whether the patient receives treatment.
+7. Quality of medical care received has a direct effect on whether the patient recovers.
+8. Patient's adherence to prescribed treatments has a direct effect on whether the patient recovers.
+9. Patient's emotional well-being has a direct effect on the duration of recovery.
+10. Patient's social support system has a direct effect on the duration of recovery.
+11. Patient's overall health condition has a direct effect on the duration of recovery.
+12. Patient's compliance with post-recovery guidelines has a direct effect on the overall health outcomes of the patient.
+13. Patient's underlying health conditions have a direct effect on the overall health outcomes of the patient.
+14. Patient's genetic predisposition has a direct effect on the overall health outcomes of the patient.
+15. Patient's access to follow-up care has a direct effect on the overall health outcomes of the patient.
+16. Patient's engagement in lifestyle changes has a direct effect on the overall health outcomes of the patient.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Unobserved confounders has a direct effect on drug taken.Treatment assignment has a direct effect on drug taken. 1. Unobserved confounders have a direct effect on treatment assignment.
+Explanation 3. Unobserved confounders have a direct effect on treatment outcome.
+Explanation: The presence of unobserved confounders can directly impact the outcomes individuals experience, regardless of their assigned treatment. These confounding factors may influence the effectiveness or response to treatment, leading to different outcomes for individuals with similar treatment assignments.
+
+4. Drug taken has a direct effect on treatment outcome.
+Explanation: Whether an individual takes the drug as prescribed can directly affect the outcome they experience from the treatment. If someone does not take the drug consistently or at all, it can reduce the effectiveness of the treatment and potentially lead to poorer outcomes compared to those who adhere to the prescribed regimen.
+5. Treatment assignment has a direct effect on treatment outcome.
+Explanation: The specific treatment assigned to an individual can directly impact the outcome they experience. Different treatments may have varying levels of effectiveness or side effects, leading to different outcomes for individuals with different treatment assignments.
+
+6. Drug taken has a direct effect on adherence to treatment.
+Explanation: Whether an individual takes the drug as prescribed can directly affect their adherence to the treatment regimen. If someone consistently takes the drug as instructed, it increases the likelihood of adhering to the treatment plan and potentially achieving better outcomes compared to those who do not adhere to the prescribed drug regimen.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Unobserved confounders has a direct effect on drug taken.Treatment assignment has a direct effect on drug taken. 1. Unobserved confounders have a direct effect on treatment assignment.
+Explanation 3. Unobserved confounders have a direct effect on treatment outcome.
+Explanation: The presence of unobserved confounders can directly impact the outcomes individuals experience, regardless of their assigned treatment. These confounding factors may influence the effectiveness or response to treatment, leading to different outcomes for individuals with similar treatment assignments.
+
+4. Drug taken has a direct effect on treatment outcome.
+Explanation: Whether an individual takes the drug as prescribed can directly affect the outcome they experience from the treatment. If someone does not take the drug consistently or at all, it can reduce the effectiveness of the treatment and potentially lead to poorer outcomes compared to those who adhere to the prescribed regimen.
+5. Treatment assignment has a direct effect on treatment outcome.
+Explanation: The specific treatment assigned to an individual can directly impact the outcome they experience. Different treatments may have varying levels of effectiveness or side effects, leading to different outcomes for individuals with different treatment assignments.
+
+6. Drug taken has a direct effect on adherence to treatment.
+Explanation: Whether an individual takes the drug as prescribed can directly affect their adherence to the treatment regimen. If someone consistently takes the drug as instructed, it increases the likelihood of adhering to the treatment plan and potentially achieving better outcomes compared to those who do not adhere to the prescribed drug regimen.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Unobserved confounders has a direct effect on maternal smoking status.Cigarette tax has a direct effect on maternal smoking status.Unobserved confounders has a direct effect on infant's birth weight.Maternal smoking status has a direct effect on infant's birth weight. Maternal education has a direct effect on maternal smoking status.
+Maternal smoking status has a direct effect on infant's respiratory health. Unobserved confounders -> Maternal smoking status
+Cigarette tax -> Maternal smoking status
+Unobserved confounders -> Infant's birth weight
+Maternal smoking status -> Infant's birth weight
+Maternal education -> Maternal smoking status
+Maternal smoking status -> Infant's respiratory health
+Unobserved confounders -> Maternal smoking status
+Cigarette tax -> Maternal smoking status
+Unobserved confounders -> Infant's birth weight
+Maternal smoking status -> Infant's birth weight
+Maternal education -> Maternal smoking status
+Maternal smoking status -> Infant's respiratory health
+Maternal age -> Maternal smoking status
+Maternal smoking status -> Unplanned pregnancy
+Paternal smoking status -> Maternal smoking status
+Maternal smoking status -> Preterm birth
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Parents' intelligence has a direct effect on parents' social status.Unobserved confounders has a direct effect on parents' social status.Parents' social status has a direct effect on child's intelligence.Parents' intelligence has a direct effect on child's intelligence.Unobserved confounders has a direct effect on child's intelligence. 1. Parents' education level has a direct effect on parents' social status.
+2. Parents' occupation has a direct effect on parents' social status.
+3. Parents' social status has a direct effect on child's educational opportunities.
+4. Parents' social status has a direct effect on child's access to healthcare resources. 5. Parents' education level has a direct effect on child's educational opportunities.
+6. Parents' occupation has a direct effect on child's access to healthcare resources.
+7. Parents' education level has a direct effect on child's intelligence.
+8. Parents' occupation has a direct effect on child's intelligence.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Parents' intelligence has a direct effect on parents' social status.Unobserved confounders has a direct effect on parents' social status.Parents' social status has a direct effect on child's intelligence.Parents' intelligence has a direct effect on child's intelligence.Unobserved confounders has a direct effect on child's intelligence. 1. Parents' education level has a direct effect on parents' social status.
+2. Parents' occupation has a direct effect on parents' social status.
+3. Parents' social status has a direct effect on child's educational opportunities.
+4. Parents' social status has a direct effect on child's access to healthcare resources. 5. Parents' education level has a direct effect on child's educational opportunities.
+6. Parents' occupation has a direct effect on child's access to healthcare resources.
+7. Parents' education level has a direct effect on child's intelligence.
+8. Parents' occupation has a direct effect on child's intelligence.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Gender of the applicant (male/female) has a direct effect on competitiveness of the applied department.Residency status (out-of-state/in-stage) has a direct effect on competitiveness of the applied department.Competitiveness of the applied department has a direct effect on admission status (rejected/admitted).Gender of the applicant (male/female) has a direct effect on admission status (rejected/admitted).Residency status (out-of-state/in-stage) has a direct effect on admission status (rejected/admitted). 1. Academic background (strong/weak) has a direct effect on competitiveness of the applied department.
+2. Letters of recommendation (positive/negative) have a direct effect on competitiveness of the applied department.
+
+3. Academic background (strong/weak) has a direct effect on admission status (rejected/admitted).
+4. Letters of recommendation (positive/negative) have a direct effect on admission status (rejected/admitted). 5. Socioeconomic status (high/low) has a direct effect on competitiveness of the applied department.
+6. Socioeconomic status (high/low) has a direct effect on admission status (rejected/admitted).
+7. Personal statement quality (strong/weak) has a direct effect on competitiveness of the applied department.
+8. Personal statement quality (strong/weak) has a direct effect on admission status (rejected/admitted).
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Gender of the applicant (male/female) has a direct effect on competitiveness of the applied department.Residency status (out-of-state/in-stage) has a direct effect on competitiveness of the applied department.Competitiveness of the applied department has a direct effect on admission status (rejected/admitted).Gender of the applicant (male/female) has a direct effect on admission status (rejected/admitted).Residency status (out-of-state/in-stage) has a direct effect on admission status (rejected/admitted). 1. Academic background (strong/weak) has a direct effect on competitiveness of the applied department.
+2. Letters of recommendation (positive/negative) have a direct effect on competitiveness of the applied department.
+
+3. Academic background (strong/weak) has a direct effect on admission status (rejected/admitted).
+4. Letters of recommendation (positive/negative) have a direct effect on admission status (rejected/admitted). 5. Socioeconomic status (high/low) has a direct effect on competitiveness of the applied department.
+6. Socioeconomic status (high/low) has a direct effect on admission status (rejected/admitted).
+7. Personal statement quality (strong/weak) has a direct effect on competitiveness of the applied department.
+8. Personal statement quality (strong/weak) has a direct effect on admission status (rejected/admitted).
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: The CEO's decision to retain or fire the employee has a direct effect on whether the manager signs the termination letter.The CEO's decision to retain or fire the employee has a direct effect on whether the director signs the termination letter.Whether the manager signs the termination letter has a direct effect on whether the employee is fired.Whether the director signs the termination letter has a direct effect on whether the employee is fired. Whether the employee's performance meets expectations has a direct effect on whether the CEO decides to retain or fire the employee.
+
+Whether the manager provides a recommendation for termination has a direct effect on whether the director signs the termination letter. Whether the manager provides a recommendation for termination has a direct effect on whether the employee is fired.
+
+Whether the director signs the termination letter has a direct effect on whether the CEO decides to retain or fire the employee.
+Whether the director signs the termination letter has a direct effect on whether the manager provides a recommendation for termination. Whether the employee's performance meets expectations has a direct effect on whether the manager provides a recommendation for termination.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Unobserved confounders has a direct effect on education level.Whether living closed to a college or not has a direct effect on education level.Unobserved confounders has a direct effect on salary.Education level has a direct effect on salary. Whether living in a developed country or not has a direct effect on education level.
+Education level has a direct effect on job opportunities. Unobserved confounders has a direct effect on education level.
+Whether living closed to a college or not has a direct effect on education level.
+Unobserved confounders has a direct effect on salary.
+Education level has a direct effect on salary.
+Whether living in a developed country or not has a direct effect on education level.
+Education level has a direct effect on job opportunities.
+
+Living in a developed country has a direct effect on salary.
+Job opportunities have a direct effect on salary.
+Unobserved confounders has a direct effect on education level.
+Whether living closed to a college or not has a direct effect on education level.
+Living in a developed country has a direct effect on education level.
+
+Education level has a direct effect on job opportunities.
+Job opportunities have a direct effect on salary.
+
+Unobserved confounders has a direct effect on salary.
+Education level has a direct effect on salary.
+Living in a developed country has a direct effect on salary.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Competitiveness of the applied department has a direct effect on admission status (rejected/admitted).Gender of the applicant (male/female) has a direct effect on admission status (rejected/admitted).Residency status (out-of-state/in-stage) has a direct effect on admission status (rejected/admitted). 1. Academic performance of the applicant (high/low) has a direct effect on admission status (rejected/admitted).
+2. Letters of recommendation from faculty members have a direct effect on admission status (rejected/admitted). 3. Financial need of the applicant (high/low) has a direct effect on admission status (rejected/admitted).
+4. Quality of the personal statement has a direct effect on admission status (rejected/admitted).
+5. Availability of scholarships has a direct effect on financial need (high/low).
+6. Reputation of the applied department has a direct effect on competitiveness (high/low).
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Competitiveness of the applied department has a direct effect on admission status (rejected/admitted).Gender of the applicant (male/female) has a direct effect on admission status (rejected/admitted).Residency status (out-of-state/in-stage) has a direct effect on admission status (rejected/admitted). 1. Academic performance of the applicant (high/low) has a direct effect on admission status (rejected/admitted).
+2. Letters of recommendation from faculty members have a direct effect on admission status (rejected/admitted). 3. Financial need of the applicant (high/low) has a direct effect on admission status (rejected/admitted).
+4. Quality of the personal statement has a direct effect on admission status (rejected/admitted).
+5. Availability of scholarships has a direct effect on financial need (high/low).
+6. Reputation of the applied department has a direct effect on competitiveness (high/low).
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Provide two more possible cause and effect pairs based on the expanding causal relations 1. Lack of oxygen directly causes the candle to go out.
+   - This cause and effect pair expands on the previous relationship by introducing a new causal factor. When there is insufficient oxygen in the room, it can lead to the extinguishing of the candle flame.
+
+2. Power outage directly causes the dark room.
+   - This cause and effect pair introduces another potential cause for the dark room. If there is a power outage, all sources of artificial light, including electric bulbs or lamps, would cease to function, resulting in darkness in the room. 3. Lack of ventilation directly causes the room to become stuffy.
+   - This cause and effect pair expands on the relationship between the lack of oxygen and the candle going out. When there is insufficient ventilation in a room, it can lead to a buildup of stale air, making the room feel stuffy.
+
+4. Wind blowing directly causes the flame to flicker.
+   - This cause and effect pair introduces another potential cause for the behavior of the candle flame. When wind blows, it creates air movement that can affect the stability of the flame, causing it to flicker or even go out if the wind is strong enough.
+5. Presence of flammable material directly causes the candle to catch fire.
+   - This cause and effect pair highlights another potential cause for the candle flame. If there is a presence of flammable material near the candle, such as paper or fabric, it can ignite and cause the candle to catch fire.
+
+6. Lack of heat source directly causes the room to remain cold.
+   - This cause and effect pair introduces another potential cause for the temperature in the room. If there is no heat source present, such as a heater or fireplace, the room will not receive any additional warmth, resulting in it remaining cold.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Provide two more possible cause and effect pairs based on the expanding causal relations 1. Lack of oxygen directly causes the candle to go out.
+   - This cause and effect pair expands on the previous relationship by introducing a new causal factor. When there is insufficient oxygen in the room, it can lead to the extinguishing of the candle flame.
+
+2. Power outage directly causes the dark room.
+   - This cause and effect pair introduces another potential cause for the dark room. If there is a power outage, all sources of artificial light, including electric bulbs or lamps, would cease to function, resulting in darkness in the room. 3. Lack of ventilation directly causes the room to become stuffy.
+   - This cause and effect pair expands on the relationship between the lack of oxygen and the candle going out. When there is insufficient ventilation in a room, it can lead to a buildup of stale air, making the room feel stuffy.
+
+4. Wind blowing directly causes the flame to flicker.
+   - This cause and effect pair introduces another potential cause for the behavior of the candle flame. When wind blows, it creates air movement that can affect the stability of the flame, causing it to flicker or even go out if the wind is strong enough.
+5. Presence of flammable material directly causes the candle to catch fire.
+   - This cause and effect pair highlights another potential cause for the candle flame. If there is a presence of flammable material near the candle, such as paper or fabric, it can ignite and cause the candle to catch fire.
+
+6. Lack of heat source directly causes the room to remain cold.
+   - This cause and effect pair introduces another potential cause for the temperature in the room. If there is no heat source present, such as a heater or fireplace, the room will not receive any additional warmth, resulting in it remaining cold.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: The CEO's decision to retain or fire the employee has a direct effect on whether the manager signs the termination letter.The CEO's decision to retain or fire the employee has a direct effect on whether the director signs the termination letter.Whether the manager signs the termination letter has a direct effect on whether the employee is fired.Whether the director signs the termination letter has a direct effect on whether the employee is fired. Whether the employee's performance meets expectations has a direct effect on whether the CEO decides to retain or fire the employee.
+
+Whether the manager supports the employee's retention or termination has a direct effect on whether the director signs the termination letter. Whether the director supports the employee's retention or termination has a direct effect on whether the manager signs the termination letter.
+
+Whether the CEO receives feedback from other employees about the employee's performance has a direct effect on whether the CEO decides to retain or fire the employee.
+Whether the CEO receives feedback from other employees about the employee's performance has a direct effect on whether the manager supports the employee's retention or termination. Whether the CEO receives feedback from other employees about the employee's performance has a direct effect on whether the director supports the employee's retention or termination.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Gender of the applicant (male/female) has a direct effect on competitiveness of the applied department.Competitiveness of the applied department has a direct effect on admission status (rejected/admitted).Gender of the applicant (male/female) has a direct effect on admission status (rejected/admitted). 1. Socioeconomic background of the applicant has a direct effect on competitiveness of the applied department.
+- A higher socioeconomic background can provide access to better educational resources, opportunities, and support systems, which may increase the competitiveness of the applicant in their chosen department.
+
+2. Academic performance of the applicant has a direct effect on admission status (rejected/admitted).
+- Applicants with stronger academic performance, reflected through grades, test scores, and achievements, are more likely to be admitted into the desired department compared to those with weaker academic records. 3. Personal statement of the applicant has a direct effect on competitiveness of the applied department.
+- A well-written and compelling personal statement can showcase the applicant's passion, motivation, and relevant experiences, making them more competitive in the application process.
+
+4. Faculty recommendations have a direct effect on admission status (rejected/admitted).
+- Positive and strong recommendations from faculty members who have worked closely with the applicant can greatly influence the admission decision, increasing their chances of being admitted into the desired department.
+5. Work experience of the applicant has a direct effect on competitiveness of the applied department.
+- Applicants with relevant work experience in their chosen field may have an advantage over those without, as it demonstrates practical skills and knowledge that can make them more competitive in the application process.
+
+6. Diversity initiatives of the university have a direct effect on admission status (rejected/admitted).
+- Universities that prioritize diversity and actively seek to admit applicants from underrepresented backgrounds may be more likely to admit individuals who belong to such groups, increasing their chances of being admitted into the desired department.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Gender of the applicant (male/female) has a direct effect on competitiveness of the applied department.Competitiveness of the applied department has a direct effect on admission status (rejected/admitted).Gender of the applicant (male/female) has a direct effect on admission status (rejected/admitted). 1. Socioeconomic background of the applicant has a direct effect on competitiveness of the applied department.
+- A higher socioeconomic background can provide access to better educational resources, opportunities, and support systems, which may increase the competitiveness of the applicant in their chosen department.
+
+2. Academic performance of the applicant has a direct effect on admission status (rejected/admitted).
+- Applicants with stronger academic performance, reflected through grades, test scores, and achievements, are more likely to be admitted into the desired department compared to those with weaker academic records. 3. Personal statement of the applicant has a direct effect on competitiveness of the applied department.
+- A well-written and compelling personal statement can showcase the applicant's passion, motivation, and relevant experiences, making them more competitive in the application process.
+
+4. Faculty recommendations have a direct effect on admission status (rejected/admitted).
+- Positive and strong recommendations from faculty members who have worked closely with the applicant can greatly influence the admission decision, increasing their chances of being admitted into the desired department.
+5. Work experience of the applicant has a direct effect on competitiveness of the applied department.
+- Applicants with relevant work experience in their chosen field may have an advantage over those without, as it demonstrates practical skills and knowledge that can make them more competitive in the application process.
+
+6. Diversity initiatives of the university have a direct effect on admission status (rejected/admitted).
+- Universities that prioritize diversity and actively seek to admit applicants from underrepresented backgrounds may be more likely to admit individuals who belong to such groups, increasing their chances of being admitted into the desired department.
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Poverty of the region has a direct effect on water quality which the person drinks.Whether the person is served by a local water company or a global water company has a direct effect on water quality which the person drinks.Poverty of the region has a direct effect on whether the person gets cholera.Water quality which the person drinks has a direct effect on whether the person gets cholera. Lack of access to proper sanitation facilities has a direct effect on water quality which the person drinks.
+
+Inadequate healthcare infrastructure in the region has a direct effect on whether the person gets cholera. Poverty of the region -> Water quality which the person drinks
+Whether the person is served by a local water company or a global water company -> Water quality which the person drinks
+Poverty of the region -> Whether the person gets cholera
+Water quality which the person drinks -> Whether the person gets cholera
+Lack of access to proper sanitation facilities -> Water quality which the person drinks
+Inadequate healthcare infrastructure in the region -> Whether the person gets cholera
+Poverty of the region -> Whether the person gets cholera
+Water quality which the person drinks -> Whether the person gets cholera
+Lack of access to proper sanitation facilities -> Water quality which the person drinks
+Inadequate healthcare infrastructure in the region -> Whether the person gets cholera
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Whether the person has a smoking gene has a direct effect on smoking or not.Pollution status of the living place has a direct effect on smoking or not.Smoking or not has a direct effect on whether the person has lung cancer.Whether the person has a smoking gene has a direct effect on whether the person has lung cancer.Pollution status of the living place has a direct effect on whether the person has lung cancer. Whether the person has a smoking gene has a direct effect on whether the person develops respiratory diseases.
+Pollution status of the living place has a direct effect on whether the person develops respiratory diseases. Whether the person has a smoking gene -> Smoking or not
+Pollution status of the living place -> Smoking or not
+
+Smoking or not -> Lung cancer
+Whether the person has a smoking gene -> Lung cancer
+Pollution status of the living place -> Lung cancer
+
+Whether the person has a smoking gene -> Respiratory diseases
+Pollution status of the living place -> Respiratory diseases
+Smoking or not -> Respiratory diseases
+
+Expand the causal graph with two more cause and effect pairs on both original nodes and newly created nodes: Unobserved confounders has a direct effect on education level.Unobserved confounders has a direct effect on salary.Education level has a direct effect on salary. Unobserved confounders have a direct effect on job satisfaction.
+Job satisfaction has a direct effect on productivity.
+
+Salary has a direct effect on job satisfaction.
+Job satisfaction has a direct effect on employee turnover. Unobserved confounders has a direct effect on education level.
+Unobserved confounders has a direct effect on salary.
+Education level has a direct effect on salary. 
+Unobserved confounders have a direct effect on job satisfaction.
+Job satisfaction has a direct effect on productivity.
+Salary has a direct effect on job satisfaction.
+Job satisfaction has a direct effect on employee turnover.
+
+Unobserved confounders has a direct effect on employee turnover.
+Education level has a direct effect on employee turnover.
+Unobserved confounders has a direct effect on employee turnover.
+Education level has a direct effect on employee turnover.
+

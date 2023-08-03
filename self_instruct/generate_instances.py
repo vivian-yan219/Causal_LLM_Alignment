@@ -6,11 +6,12 @@ import re
 import argparse
 import pandas as pd
 from collections import OrderedDict
-from gpt3_api import make_requests as make_gpt3_requests
-from templates.instance_gen_template import output_first_template_for_clf, input_first_template_for_gen
+from gpt3_api import make_gpt3_requests_chat as make_gpt3_requests
+
+#from templates.instance_gen_template import output_first_template_for_clf, input_first_template_for_gen
 
 
-random.seed(42)
+random.seed(5)
 
 
 def parse_args():
@@ -80,10 +81,15 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
+    # input file: machine generated instructions
     with open(os.path.join(args.batch_dir, args.input_file)) as fin:
         lines = fin.readlines()
+
+        # if there are machine generated instructions, extract specified num of instructions
         if args.num_instructions is not None:
             lines = lines[:args.num_instructions]
+
+        # rename metadata from input file and store it in tasks list
         tasks = []
         for line in lines:
             data = json.loads(line)
@@ -92,6 +98,8 @@ if __name__ == '__main__':
                 del data["metadata"]
             tasks.append(data)
 
+    '''
+# causal inference are always generation tasks
     task_clf_types = {}
     with open(os.path.join(args.batch_dir, "is_clf_or_not_davinci_template_1.jsonl")) as fin:
         for line in fin:
@@ -100,9 +108,10 @@ if __name__ == '__main__':
 
     if args.classification_tasks_only:
         tasks = [task for task in tasks if task_clf_types[task["instruction"]]]
-    
+
     if args.generation_tasks_only:
         tasks = [task for task in tasks if not task_clf_types[task["instruction"]]]
+    '''
 
     output_path = os.path.join(args.batch_dir, args.output_file)
     existing_requests = {}
@@ -130,29 +139,33 @@ if __name__ == '__main__':
                         )
                     fout.write(json.dumps(data, ensure_ascii=False) + "\n")
             else:
-                prompts = []
+                #prompts = []
+                #print(batch)
+                #print(1)
+                results = []
                 for task in batch:
-                    if task_clf_types[task["instruction"]]:
-                        prompt = output_first_template_for_clf + " " + task["instruction"].strip() + "\n"
-                        prompts.append(prompt)
-                    else:
-                        prompt = input_first_template_for_gen + " " + task["instruction"].strip() + "\n"
-                        prompts.append(prompt)
-                results = make_gpt3_requests(
+                    prompt = 'Based the following instruction, generate 10 reasonable causal question and answer pair: ' + task['instruction'].strip() + '\n'
+                    #prompts.append(prompt)
+
+                    result = make_gpt3_requests(
                     engine=args.engine,
-                    prompts=prompts,
+                    messages=[{'role': 'user', 'content': prompt}],
                     # because the clf template is longer, we need to decrease the max_tokens
-                    max_tokens=300 if any(task_clf_types[task["instruction"]] for task in batch) else 350,
+                    #max_tokens=300 if any(task_clf_types[task["instruction"]] for task in batch) else 350,
+                    max_tokens = 1024,
                     temperature=0,
                     top_p=0,
                     frequency_penalty=0,
                     presence_penalty=1.5,
-                    stop_sequences=[f"Example {args.max_instances_to_generate + 1}", "Task:"],
-                    logprobs=1,
-                    n=1,
-                    best_of=1,
+                    #stop_sequences=[f"Example {args.max_instances_to_generate + 1}", "Task:"],
+                    #logprobs=1,
+                    #n=1,
+                    #best_of=1,
                     api_key=args.api_key,
                     organization=args.organization)
+                    
+                    fout.write(json.dumps(result, ensure_ascii=False) + '\n')
+                '''
                 for i in range(len(batch)):
                     data = batch[i]
                     data["instance_metadata"] = results[i]
@@ -166,4 +179,5 @@ if __name__ == '__main__':
                             "most_similar", "avg_similarity_score"]
                         )
                     fout.write(json.dumps(data, ensure_ascii=False) + "\n")
+                '''
             progress_bar.update(len(batch))
