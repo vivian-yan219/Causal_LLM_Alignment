@@ -1,4 +1,4 @@
-# Self-Instruct: Aligning LM with Self Generated Instructions
+# Aligning LM with Self Generated Instructions
 
 This repository contains code and data for the [Self-Instruct paper](https://arxiv.org/abs/2212.10560), a method for aligning pretrained language models with instructions.
 
