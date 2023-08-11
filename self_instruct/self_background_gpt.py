@@ -12,6 +12,7 @@ from functools import partial
 from rouge_score import rouge_scorer
 from gpt3_api import make_requests as make_gpt3_requests_generate_new
 from gpt3_api import make_gpt3_requests_chat
+import networkx as nx
 
 
 random.seed(5)
@@ -149,6 +150,7 @@ if __name__ == "__main__":
     # load the LM-generated instructions
     machine_instructions = []
     request_idx = 0
+    graph_list = []
     if os.path.exists(os.path.join(args.batch_dir, 'machine_generated_instructions.json')):
         with open(os.path.join(args.batch_dir, 'machine_generated_instructions.json'), 'r')as fin:
             for line in fin:
@@ -165,7 +167,8 @@ if __name__ == "__main__":
     if machine_instructions:
         progress_bar.update(len(machine_instructions))
 
-    expanded_prompts = open(("data/gpt3_generations/expanded_prompts.json"), "w")
+    expanded_prompts = open("data/gpt3_generations/expanded_prompts.json", "w")
+    graphs_display = open("data/gpt3_generations/graphs_display.json", "w")
     
     with open(os.path.join(args.batch_dir, "machine_generated_instructions.json"), "a") as fout:
         while len(machine_instructions) < args.num_instructions_to_generate:
@@ -178,14 +181,13 @@ if __name__ == "__main__":
                     machine_instructions, 
                     n=2)
                 # sample human instructions from the pool
-                # 填充machine不够的，但在一开始machine还没generate的时候，需要剔除已经方进来的，不然会重复
                 prompt_instructions += random.sample(seed_instructions, args.num_prompt_instructions - len(prompt_instructions))
                 
                 random.shuffle(prompt_instructions)
                 
                 prompt = encode_prompt(prompt_instructions, classification=args.use_clf_seed_tasks_only)       
                 batch_inputs.append(prompt)
-            print(len(batch_inputs))
+            # print(batch_inputs): 3 batches of 5 instructions
 
             results = make_gpt3_requests_generate_new(
                 engine=args.engine_new,
@@ -223,9 +225,10 @@ if __name__ == "__main__":
                     }
                 machine_instructions.append(inst)
                                
-
+                base_graph = nx.DiGraph()
+                print(inst)
                 prompt = 'Can you extract the cause and effect pairs from the given pre-defined graph and return the result in json format? Here is an example:\nGiven the causal graph: The level of education has a direct effect on the income level. Whether the person has a high income level or not affects the person\'s accessibility to healthcare.\nThe cause and effect pairs are:\n{"pairs":[{"cause": "level of education","effect": "income level"},{"cause": "income level","effect": "accessibility to healthcare"}]}\nNow, given the causal graph: ' + inst + '\nReturn the cause and effect pairs in json as the previous example.'
-                expand_result = make_gpt3_requests_chat(
+                base_result = make_gpt3_requests_chat(
                         engine=args.engine_chat,
                         messages=[{'role':'user', 'content':prompt}],
                         max_tokens=1024,
@@ -235,9 +238,46 @@ if __name__ == "__main__":
                         presence_penalty=2,
                         api_key=args.api_key,
                         organization=args.organization)
+                graph = base_result["response"]['choices'][0]['message']['content']
+                base_edges = []
+                node_hm = {}
+                for pair in json.loads(graph)['pairs']:
+                    cause = pair['cause']
+                    effect = pair['effect']
+                    if cause in list(node_hm.values()):
+                        if effect in list(node_hm.values()):
+                            base_edges.append((list(node_hm.keys())[list(node_hm.values()).index(cause)],
+                                               list(node_hm.keys())[list(node_hm.values()).index(effect)]))
+                            continue
+                        else:
+                            length = len(node_hm)
+                            node_hm[chr(ord('A')+length)] = effect
+                            base_edges.append((list(node_hm.keys())[list(node_hm.values()).index(cause)],
+                                               chr(ord('A')+length)))
+                    else:
+                        if effect in list(node_hm.values()):
+                            length = len(node_hm)
+                            node_hm[chr(ord('A')+length)] = cause
+                            base_edges.append((chr(ord('A')+length),
+                                               list(node_hm.keys())[list(node_hm.values()).index(effect)]))
+                        else:
+                            length = len(node_hm)
+                            node_hm[chr(ord('A')+length)] = cause
+                            node_hm[chr(ord('A')+length+1)] = effect
+                            base_edges.append((chr(ord('A')+length),
+                                               chr(ord('A')+length+1)))
+                base_graph.add_edges_from(base_edges)
+
+                # shorten the graph
+                base_nodes = list(node_hm.keys())
+                print(node_hm)
                 
-                loop = 0
-                while loop < 20:
+                THRESH = 4
+                MAX_NODES = 20
+                while True:
+                    
+                    prompt = 'Can you continue constructing the graph with two more cause and effect pairs that expand from current nodes in the pre-defined causal graph? Remember to add the pairs in the json object directly and return. Example:\nGiven the causal graph in json format:\n{"pairs": [{"cause": "level of education", "effect": "income level"}, {"cause": "income level", "effect": "accessibility to healthcare"}]}\nAdding two more cause and effect pairs, the causal graph is:\n{"pairs": [{"cause": "level of education", "effect": "income level"}, {"cause": "income level", "effect": "accessibility to healthcare"}, {"cause": "level of education", "effect": "professional skills"}, {"cause": "professional skills", "effect": "income level"}]}\nNow, given the causal graph in json format:\n' + str(graph) + '\nReturn the expanded causal graph in json as the previous example.'
+
                     expand_result = make_gpt3_requests_chat(
                         engine=args.engine_chat,
                         messages=[{'role':'user', 'content':prompt}],
@@ -249,12 +289,61 @@ if __name__ == "__main__":
                         api_key=args.api_key,
                         organization=args.organization,
                     )
-                    loop += 1  # 2 more pairs
+                    graph = expand_result["response"]['choices'][0]['message']['content']
                     
-                    graph = expand_result["response"]['choices'][0]['message']['content'] # json format response
-                    prompt = 'Can you continue constructing the graph with two more cause and effect pairs that expand from current nodes in the pre-defined causal graph? Remember to add the pairs in the json object directly and return. Here is an example:\nGiven the causal graph in json format:\n{"pairs": [{"cause": "level of education", "effect": "income level"}, {"cause": "income level", "effect": "accessibility to healthcare"}]}\nAdding two more cause and effect pairs, the causal graph is:\n{"pairs": [{"cause": "level of education", "effect": "income level"}, {"cause": "income level", "effect": "accessibility to healthcare"}, {"cause": "level of education", "effect": "professional skills"}, {"cause": "professional skills", "effect": "income level"}]}\nNow, given the causal graph in json format:\n' + str(graph) + '\nReturn the expanded causal graph in json as the previous example.'
+                    print(graph)
+                    # 问题：会有多生成的pair但是不在[-2:]的范围内
+                    for pair in json.loads(graph)['pairs'][-2:]:
+                        cause = pair['cause']
+                        effect = pair['effect']
+                        if len(base_graph.nodes) >= MAX_NODES:
+                            break
+                        
+                        print(node_hm)
+                        if cause in list(node_hm.values()):
+                            if effect in list(node_hm.values()):
+                                base_graph.add_edge((list(node_hm.keys())[list(node_hm.values()).index(cause)],
+                                                     list(node_hm.keys())[list(node_hm.values()).index(effect)]))
+                                continue
+                            else:
+                                length = len(node_hm)
+                                node_hm[chr(ord('A')+length)] = effect
+                                base_graph.add_edge((list(node_hm.keys())[list(node_hm.values()).index(cause)],
+                                                     chr(ord('A')+length)))
+                        else:
+                            if effect in list(node_hm.values()):
+                                length = len(node_hm)
+                                node_hm[chr(ord('A')+length)] = cause
+                                base_graph.add_edge((chr(ord('A')+length),
+                                                     list(node_hm.keys())[list(node_hm.values()).index(effect)]))
+                            else:
+                                length = len(node_hm)
+                                node_hm[chr(ord('A')+length)] = cause
+                                node_hm[chr(ord('A')+length+1)] = effect
+                                base_graph.add_edge((chr(ord('A')+length),
+                                                     chr(ord('A')+length+1)))
 
-                print(expand_result['response'])
+                        cause_exp = list(node_hm.keys())[list(node_hm.values()).index(cause)]
+                        effect_exp = list(node_hm.keys())[list(node_hm.values()).index(effect)]
+                        if (cause_exp not in base_graph and effect_exp not in base_graph) \
+                            or (cause_exp in base_graph and effect_exp not in list(base_graph.successors(cause_exp))) \
+                            or (effect_exp in base_graph and cause_exp not in list(base_graph.predecessors(effect_exp))):
+                            base_graph.add_edge(cause_exp, effect_exp)
+                        else:
+                            continue
+                        print(base_graph.nodes)
+
+                        if len(list(nx.simple_cycles(base_graph))) != 0: # cycle occurs
+                            base_graph.remove_edge(cause_exp, effect_exp)
+                        elif len(list(base_graph.predecessors(pair['effect']))) > THRESH:
+                            base_graph.remove_edge(cause_exp, effect_exp)
+                        elif len(list(base_graph.successors(pair['cause']))) > THRESH:
+                            base_graph.remove_edge(cause_exp, effect_exp)
+
+                    if len(base_graph.nodes) >= MAX_NODES:
+                        break
+                    
+                print(base_result['response'])
                 fout.write(json.dumps({
                     "instruction": inst,
                     "causal_graph": expand_result['response']['choices'][0]['message']['content'],
@@ -263,65 +352,6 @@ if __name__ == "__main__":
                     "metadata": metadata,
                     "request_idx": request_idx
                 }) + "\n")
+                graphs_display.write(json.dumps(graph_list, indent=2) + '\n')
                 progress_bar.update(1)
             request_idx += 1
-            
-            '''
-            for prompt in batch_inputs:
-                prompt = 'Can you extract the cause and effect pairs from the given pre-defined graph and return the result in json format? Here is an example:\nGiven the causal graph: The level of education has a direct effect on the income level. Whether the person has a high income level or not affects the person\'s accessibility to healthcare.\nThe cause and effect pairs are:\n{"pairs":[{"cause": "level of education","effect": "income level"},{"cause": "income level","effect": "accessibility to healthcare"}]}\nNow, given the causal graph: ' + prompt + '\nReturn the cause and effect pairs in json as the previous example.'
-                result = make_gpt3_requests_chat(
-                        engine=args.engine,
-                        messages=[{'role':'user', 'content':prompt}],
-                        max_tokens=1024,
-                        temperature=0.7,
-                        top_p=0.5,
-                        frequency_penalty=0,
-                        presence_penalty=2,
-                        api_key=args.api_key,
-                        organization=args.organization)
-                
-                loop = 0
-                while loop <= 3:
-                    result = make_gpt3_requests_chat(
-                        engine=args.engine,
-                        messages=[{'role':'user', 'content':prompt}],
-                        max_tokens=1024,
-                        temperature=0.7,
-                        top_p=0.5,
-                        frequency_penalty=0,
-                        presence_penalty=2,
-                        api_key=args.api_key,
-                        organization=args.organization,
-                    )
-                    loop += 1
-                    
-                    graph = result["response"]['choices'][0]['message']['content'] # json format response
-                    prompt = 'Can you continue constructing the graph with two more cause and effect pairs that expand from current nodes in the pre-defined causal graph? Remember to add the pairs in the json object directly and return. Here is an example:\nGiven the causal graph in json format:\n{"pairs": [{"cause": "level of education", "effect": "income level"}, {"cause": "income level", "effect": "accessibility to healthcare"}]}\nAdding two more cause and effect pairs, the causal graph is:\n{"pairs": [{"cause": "level of education", "effect": "income level"}, {"cause": "income level", "effect": "accessibility to healthcare"}, {"cause": "level of education", "effect": "professional skills"}, {"cause": "professional skills", "effect": "income level"}]}\nNow, given the causal graph in json format:\n' + str(graph) + '\nReturn the expanded causal graph in json as the previous example.'
-
-                
-                expanded_prompts.write(prompt + '\n')
-                print(result) 
-                # 替换成文字
-                machine_instructions.append(result['response'])
-                fout.write(json.dumps({
-                    "gpt_chat": result['response'],
-                    "request_idx": request_idx
-                }) + "\n")
-                request_idx += 1
-                print(len(machine_instructions))
-                
-
-                
-                new_instructions = result["response"]
-                instructions += new_instructions
-                all_metadata += [result] * len(new_instructions)
-            
-            for inst, metadata in zip(instructions, all_metadata):
-                machine_instructions.append(inst)
-                fout.write(json.dumps({
-                    "gpt_chat": metadata,
-                    "request_idx": request_idx
-                }) + "\n")
-                progress_bar.update(1)
-            request_idx += 1
-                '''

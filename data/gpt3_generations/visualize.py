@@ -9,7 +9,7 @@ import json
 import numpy as np
 from ananke import graphs
 from ananke import identification
-
+'''
 with open('machine_generated_instructions.json') as fin:
     data = fin.readlines()
     vs = []
@@ -32,24 +32,13 @@ with open('machine_generated_instructions.json') as fin:
         break
         vs.append(v)
         es.append(e)
-
 '''
-vertices = ['patient eat citrus', 
-            'patient has sufficient vitamin C',
-            'patient recovers from scurvy', 
-            'patient\'s immune system strengthens', 
-            'patient fights off infections',
-            'patient\'s overall health improves',
-            'patient has more energy']
-edges = [('patient eat citrus', 'patient has sufficient vitamin C'), 
-        ('patient has sufficient vitamin C', 'patient recovers from scurvy'),
-        ('patient eat citrus', 'patient\'s immune system strengthens'),
-        ('patient\'s immune system strengthens', 'patient fights off infections'),
-        ('patient has sufficient vitamin C', 'patient\'s overall health improves'),
-        ('patient\'s overall health improves', 'patient has more energy')]
+
+vertices = ['police officer wears a bulletproof vest', 'police officer is shot', 'person dies', 'safety of police officer', "police officer's survival", 'person survives', 'gunshot wound severity', "police officer's recovery", 'injury prevention', "person's safety", 'bulletproof vest effectiveness', 'professional skills', 'accessibility to healthcare', "person's health"]
+edges = [("police officer wears a bulletproof vest", "police officer is shot"),("police officer is shot", "person dies"), ( "police officer wears a bulletproof vest", "safety of police officer"), ( "safety of police officer", "police officer's survival"), ( "police officer is shot", "safety of police officer"), ( "safety of police officer", "person survives"), ( "police officer wears a bulletproof vest", "person survives"), ( "person survives", "police officer's survival"), ( "police officer wears a bulletproof vest", "person dies"), ( "person dies", "police officer's survival"), ( "police officer wears a bulletproof vest", "police officer's survival"), ( "police officer's survival", "person survives"), ( "police officer wears a bulletproof vest", "gunshot wound severity"), ( "gunshot wound severity", "police officer's recovery"), ( "police officer is shot", "gunshot wound severity"), ( "gunshot wound severity", "person dies"), ( "police officer wears a bulletproof vest", "injury prevention"), ( "injury prevention", "police officer's safety"), ( "police officer is shot", "injury prevention"), ( "injury prevention", "person's safety"), ( "police officer wears a bulletproof vest", "gunshot wound severity"), ( "gunshot wound severity", "person's safety"), ( "police officer wears a bulletproof vest", "bulletproof vest effectiveness"), ( "bulletproof vest effectiveness", "police officer's survival"), ( "police officer is shot", "bulletproof vest effectiveness"), ( "bulletproof vest effectiveness", "person survives"), ( "police officer wears a bulletproof vest", "professional skills"), ( "professional skills", "police officer's performance"), ( "police officer is shot", "professional skills"), ( "professional skills", "person's safety"), ( "police officer wears a bulletproof vest", "police officer's recovery"), ( "police officer's recovery", "person survives"), ( "police officer wears a bulletproof vest", "person dies"), ( "person dies", "police officer's recovery"), ( "police officer wears a bulletproof vest", "police officer's survival"), ( "police officer's survival", "safety of police officer"), ( "police officer's survival", "person survives"), ( "police officer's survival", "gunshot wound severity"), ( "police officer's survival", "injury prevention"), ( "police officer's survival", "bulletproof vest effectiveness"), ( "police officer's survival", "professional skills"), ( "police officer is shot", "person's safety"), ( "person's safety", "police officer's survival"), ( "person's safety", "gunshot wound severity"), ( "person's safety", "injury prevention"), ( "person's safety", "bulletproof vest effectiveness"), ( "person's safety", "professional skills"), ( "police officer wears a bulletproof vest", "safety of police officer"), ( "safety of police officer", "person dies"), ( "police officer is shot", "professional skills"), ( "professional skills", "person dies"), ( "police officer wears a bulletproof vest", "accessibility to healthcare"), ( "accessibility to healthcare", "police officer's health"), ( "police officer is shot", "accessibility to healthcare"), ( "accessibility to healthcare", "person's health"), ( "police officer wears a bulletproof vest", "resistance to bullets"), ( "resistance to bullets", "bullet penetration"), ( "police officer is shot", "resistance to bullets")]
 dag = graphs.DAG(vertices, edges)
 dag.draw().view()
-
+'''
 v2 = ['gender', 'smoking or not',
       'high tar deposit in lungs',
       'lung cancer',
