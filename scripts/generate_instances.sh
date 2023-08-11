@@ -7,5 +7,5 @@ python3 self_instruct/generate_instances.py \
     --max_instances_to_gen 5 \
     --engine "gpt-3.5-turbo" \
     --request_batch_size 5 \
-    --api_key "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"
+    --api_key ""
 
